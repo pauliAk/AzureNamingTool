@@ -44,7 +44,7 @@ jobs:
       outputs:
         secrets-valid: ${{ steps.secrets-valid.outputs.isvalid }}
       steps:
-        - uses: actions/checkout@v3      
+        - uses: actions/checkout@v4      
         - id: secrets-valid
           env: 
             azure-webapp-name: ${{ secrets.AZURE_WEBAPP_NAME }}
@@ -60,7 +60,7 @@ jobs:
     needs: [check-secrets]
     if: needs.check-secrets.outputs.secrets-valid == 'true'
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v2
         with:
